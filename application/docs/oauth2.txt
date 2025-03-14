@@ -1,0 +1,33 @@
+https://oauth2.thephpleague.com/
+
+openssl genrsa -out private.key 2048
+openssl rsa -in private.key -pubout -out public.key
+
+vendor/bin/generate-defuse-key
+
+use \Defuse\Crypto\Key;
+
+$server = new AuthorizationServer(
+  $clientRepository,
+  $accessTokenRepository,
+  $scopeRepository,
+  $privateKeyPath,
+  Key::loadFromAsciiSafeString($encryptionKey)
+);
+
+
+curl --location --request POST 'https://lcl.qea.la:8248/en/oauth/access-token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=YEay1uoC0k3d1Knjb4q3zVqTUI2SyFCW' \
+--data-urlencode 'client_secret=wrE2avHnL5zreDnk' \
+--data-urlencode 'grant_type=client_credentials'
+
+
+curl --location --request POST 'https://lcl.qea.la:8248/en/api/test' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Authorization: xxx'
+
+curl --location --request POST 'https://lcl.qea.la:8248/en/api/test' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--header 'Authorization: xxx'
+

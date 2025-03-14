@@ -1,0 +1,8 @@
+html{width:100%; height:100%;}
+body{width:100%; height:100%;}
+section{width:100%; height:100%;}
+div.container{width:100%; height:100%;}
+div.row{width:100%; height:100%;}
+form#signin{margin-bottom:220px;}
+
+div.logo{width:auto; height:86px; background-image:url(https://lcl.qea.la:8249/img/myavana-logo-black.png); background-position:left center; background-size:contain; background-repeat:no-repeat; margin-bottom:20px;}

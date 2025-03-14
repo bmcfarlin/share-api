@@ -1,0 +1,4 @@
+/vendor/
+private.key
+public.key
+config-cache.php
