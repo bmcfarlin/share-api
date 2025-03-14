@@ -142,7 +142,7 @@ class UserController extends BaseController
           $claims = ['user_id' => $user_id, 'username' => $username, 'tme' => time()];
           setcookie(JWT_COOKIE_NAME, Jwt::GetNew($claims), time() + JWT_COOKIE_DURATION, '/', null, JWT_HTTP_ONLY, JWT_HTTP_ONLY);
 
-          $this->redirect('/en/content/test');
+          $this->redirect('/en/user/home');
 
           // if(is_admin())
           // {
