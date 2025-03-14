@@ -1,0 +1,33 @@
+{
+    "name": "ben/fw.qea.la",
+    "authors": [
+        {
+            "name": "Ben McFarlin",
+            "email": "ben@qeala.com"
+        }
+    ],
+    "repositories": [
+    ],
+    "minimum-stability": "stable",
+
+    "require": {
+        "mobiledetect/mobiledetectlib": "^2.8",
+        "web-token/jwt-signature-algorithm-rsa": "^2.1",
+        "web-token/jwt-encryption-algorithm-aesgcm": "^2.1",
+        "web-token/jwt-encryption-algorithm-rsa": "^2.1",
+        "web-token/jwt-key-mgmt": "^2.1",
+        "web-token/jwt-signature": "^2.1",
+        "web-token/jwt-signature-algorithm-hmac": "^2.1",
+        "web-token/jwt-checker": "^2.1",
+        "league/oauth2-server": "^9.2",
+        "slim/psr7": "^1.7",
+        "csharpru/vault-php": "^4.4",
+        "laminas/laminas-diactoros": "^3.5",
+        "monolog/monolog": "^3.8",
+        "php-amqplib/php-amqplib": "^3.7"
+    },
+
+    "autoload": {
+      "classmap": [ "application/classes/"]
+    }
+}

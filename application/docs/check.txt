@@ -1,0 +1,7 @@
+select schema_name, default_character_set_name, default_collation_name from information_schema.schemata where schema_name = 'sh';
+select table_schema, table_name, table_type, table_collation from information_schema.tables where table_schema = 'sh';
+select table_schema, table_name, column_name, data_type, character_set_name, collation_name from information_schema.columns where 1=1 and data_type in('varchar','longtext','enum','text','mediumtext','set','char','tinytext') and table_schema = 'sh';
+select routine_schema, routine_name, routine_type, character_set_name, collation_name from information_schema.routines where 1=1 and routine_type = 'FUNCTION' and routine_schema = 'sh';
+select trigger_schema, trigger_name, character_set_client, collation_connection, database_collation from information_schema.triggers where trigger_schema = 'sh';
+
+

@@ -1,0 +1,38 @@
+share with friend
+reward both sharer and shareee
+track and measure
+generate a unique share link
+  - copy to clipboard
+  - share to email
+  - share to social media
+  - share via sms
+
+user arrives on landing page
+
+1. create the link
+2. send the link
+3. user clicks the link
+4. user arrives on landing page
+5. user signs up
+6. user account is credited
+
+the links can be personalized
+reporting to the user on 
+  how many clicks
+  how many signups
+
+tiered rewwards - do we pass this to the client?
+if not, then you need an action type and then business logic with the action
+then you can customize the logic
+
+no there is one share code
+but the link somehow needs to know which landing page to go to
+this would be a campain
+
+if we use the point wallet, then you can redeem for whatever
+
+so, given an email addres, the system generates a share code
+
+
+
+

@@ -1,0 +1,111 @@
+html{height:100%;}
+body{height:100%;}
+
+a{color:#00a1e6 !important;}
+
+header{background-color:#292a2c; color:#aaa; padding:30px 0 30px 0; font-size:24px; line-height:34px; display:block;}
+header div ul{display:block; list-style:none; margin:0; padding:0;}
+header div ul li{display:inline-block; margin:0 20px 0 0; padding:0;}
+header div ul li a{display:inline-block; color:#fff !important;}
+
+body > section{min-height:calc(100% - 356px);}
+body > section > section{padding:30px 0 30px 0;}
+
+footer{background-color:#292a2c; color:#aaa; padding:30px 0 30px 0; font-size:24px; line-height:34px; display:block;}
+footer div span.separator{font-family:serif; font-size:34px; line-height:34px; margin:0 10px 0 10px; display:inline-block; position:relative; color:transparent; border:1px solid transparent; border-width:0 1px 0 0;}
+footer div span.separator::before{content:''; background-color:#ffffff; position:absolute; top:50%; left:50%; width:1px; height:20px; margin-top:-6px;}
+footer div ul{display:block; list-style:none; margin:0; padding:0;}
+footer div ul li{display:block; margin:0; padding:0;}
+footer div ul li a{display:block; color:#fff !important;}
+footer div div.social {}
+footer div div.social a{text-decoration:none !important;}
+footer div div.social a svg{display:inline-block; width:30px; height:30px; margin:10px 20px 10px 0px;}
+footer div div.social a svg .fill{fill:#aaa;}
+footer div div.social a svg:hover .fill{fill:#fff;}
+footer div.logo{width:auto; height:46px; background-image:url(https://lcl.qea.la:8249/img/myavana-logo.png); background-position:left center; background-size:contain; background-repeat:no-repeat; margin-bottom:20px;}
+
+.error{color:#ff0000;}
+
+
+.btn,
+.btn:hover,
+.btn:active,
+.btn:visited,
+.btn:focus {
+    color:#fff  !important;
+    background-color: #292a2c  !important;
+    border-width:2.33px !important;
+    border-color: #292a2c !important;
+    box-shadow: none !important;
+}
+
+.btn.orange,
+.btn.orange:hover,
+.btn.orange:active,
+.btn.orange:visited,
+.btn.orange:focus {
+    color:#fff  !important;
+    background-color: #ffa500  !important;
+    border-width:2.33px !important;
+    border-color: #ffa500 !important;
+    box-shadow: none !important;
+}
+
+.btn-outline,
+.btn-outline:hover,
+.btn-outline:active,
+.btn-outline:visited,
+.btn-outline:focus {
+    color: #292a2c !important;
+    border-color: #292a2c !important;
+    border-width:2.33px !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.btn-outline.orange,
+.btn-outline.orange:hover,
+.btn-outline.orange:active,
+.btn-outline.orange:visited,
+.btn-outline.orange:focus {
+    color: #ffa500 !important;
+    border-color: #ffa500 !important;
+    border-width:2.33px !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+.btn-outline.black,
+.btn-outline.black:hover,
+.btn-outline.black:active,
+.btn-outline.black:visited,
+.btn-outline.black:focus {
+    color: #0a0a0a !important;
+    border-color: #0a0a0a !important;
+    border-width:2.33px !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+}
+
+div.indicator{position:fixed; top:0; left:0; width:20px; height:20px; display:none;}
+/* xl */
+@media only screen and (min-width: 1200px) {
+  div.indicator{ background-color: green; }
+}
+/* lg */
+@media only screen and (max-width: 1199px) {
+  div.indicator{ background-color: yellow; }
+}
+/* md */
+@media only screen and (max-width: 991px) {
+  div.indicator{ background-color: red; }
+}
+/* sm */
+@media only screen and (max-width: 767px) {
+  div.indicator{ background-color: orange; }
+}
+/* xs */
+@media only screen and (max-width: 575px) {
+  div.indicator{ background-color: blue; }
+}
+
