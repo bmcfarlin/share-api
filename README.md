@@ -1,18 +1,12 @@
 # API Documentation
 
 ## Overview
-This API provides endpoints for managing affiliates, wallets, and transactions. It supports CRUD operations through RESTful methods (GET, POST, PUT, DELETE).
+This API provides endpoints for managing affiliates, wallets, and transactions. It supports CRUD operations through RESTful methods (GET, POST, PUT, DELETE)  and requires authentication via OAuth2.
 
 ## Base URL
 ```
 /en/api/
 ```
-
-# API Documentation
-
-## Overview
-This API provides access to various resources and requires authentication via OAuth2.
-
 ## Authentication
 The API enforces authentication using OAuth2. Clients must obtain an access token by making a request to the OAuth service point. The token must be included in the `Authorization` header as a Bearer token in each API request.
 
