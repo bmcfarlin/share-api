@@ -1,5 +1,9 @@
 <?php
 
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Fig\Http\Message\StatusCodeInterface;
+
 abstract class BaseController
 {
   protected $registry;
@@ -124,4 +128,82 @@ abstract class BaseController
 
     return $claims;
   }
+
+  protected function validate(){
+    trace("validate");
+
+    $accessTokenRepository = new \OAuth2\AccessTokenRepository();
+    $publicKey = __DIR__ . '/../docs/public.key';
+    $server = new \League\OAuth2\Server\ResourceServer(
+      $accessTokenRepository,
+      $publicKey
+    );
+
+    $method = $_SERVER['REQUEST_METHOD'];
+    $uri = $_SERVER['REQUEST_URI'];
+    $factory = new \Slim\Psr7\Factory\UriFactory();
+    $uri = $factory->createUri($uri);
+    $headers = getallheaders();
+    $headers = new \Slim\Psr7\Headers($headers);
+
+    $stream = fopen('php://memory', 'r+');
+    fwrite($stream, file_get_contents("php://input"));
+    rewind($stream);
+
+    $body = new \Slim\Psr7\Stream($stream);
+    $request = new \Slim\Psr7\Request($method, $uri, $headers, $_COOKIE, $_SERVER, $body);
+    $request = $request->withParsedBody($_POST);
+
+    $stream2 = fopen('php://memory', 'r+');
+    $body2 = new \Slim\Psr7\Stream($stream2);
+    $response = new \Slim\Psr7\Response(StatusCodeInterface::STATUS_OK, null, $body2);
+
+    $middle = new \League\OAuth2\Server\Middleware\ResourceServerMiddleware($server);
+    $fn = function($request, $response) {
+      trace("fn\n");
+      return $response;
+    };
+    $next = $fn(...);
+    $result = $middle($request, $response, $next);
+  
+  }
+
+  protected function printJSON($root, $cors = 1){
+    
+    trace(sprintf("printJSON: %s", $this->cmd));
+
+    if($root->items){
+      $count = count($root->items);
+      for($i=0;$i<$count;$i++){
+        $item = $root->items[$i];
+        $json = json_encode($item);
+        $values = json_decode($json, true);
+        ksort($values);
+        $json = json_encode($values);
+        $item = json_decode($json);
+        $root->items[$i] = $item;
+      }      
+
+    }
+
+    $origin = 'https://localhost';
+
+    $http_origin = $_SERVER['HTTP_ORIGIN'];
+
+    if($http_origin == 'null' || $http_origin == null){
+      $origin = 'file://';
+      $origin = '*';
+    }
+
+    $origin = '*';
+
+    trace($root);
+
+    header("Content-Type: application/json");
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Headers: Authorization,Content-Type");
+    header("Access-Control-Max-Age: 86400");
+    print json_encode($root) . PHP_EOL;
+  }
+
 }
