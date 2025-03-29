@@ -1,0 +1,1 @@
+mysql -D sh < partner.sql;

@@ -5,7 +5,7 @@
   use Monolog\Logger;
   use Monolog\Handler\StreamHandler;
 
-  error_reporting(E_ALL & ~E_DEPRECATED & ~E_WARNING);
+  error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED);
 
   include_once(__DIR__ . '/../../vendor/autoload.php');
   include_once(__DIR__ . '/../settings.php');

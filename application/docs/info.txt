@@ -30,8 +30,75 @@ but the link somehow needs to know which landing page to go to
 this would be a campain
 
 if we use the point wallet, then you can redeem for whatever
-
 so, given an email addres, the system generates a share code
+
+
+
+implementation
+==============
+okay yea seeing the interface will help us build the api and the databas
+without the user flow, you don't know what values need to be stored
+but we know for sure we are going to need all the user scaffolding (already there)
+plus the wallet and the tx tables; that creates the ledger;
+you can set the jsonn to null because there's not stripe or anything;
+but we need specifics on what we need to report on
+can't remember that site; where was it
+
+build the whole thing on email addresses to begin with
+then you could require 2fa on a phone to enable the account
+that would prevent people from scamming the system with fake email addresses
+plus you don't assign points unless there is a purchase; you don't assign based on the share alone;
+if you do it that way, then you can add multiple rewards throughout the journey
+
+create new account on mv
+that has a user_id
+then create the affiliate link
+  send the email address to the api
+  it returns a new affiliate code
+  it stores the relationship on its' side
+  you can optionally store it as well but, we prefer you use the ap
+  so it's the affiliate code but it's tied to the email address
+
+item
+  item_id int(10)
+  name varchar(100)
+
+affiliate
+  affiliate_id int(10)
+  partner_id int(10)
+  user_id varchar(36)
+  code varchar(100)
+
+partner
+  partner_id int(10)
+  name varchar(100)
+  description varchr(512)
+  url varchar(100)
+  email varchar(100)
+
+wallet
+  wallet_id int(10)
+  affiliate_id int(10)
+  name varchar(100)  
+
+tx
+  tx_id int(10)
+  wallet_id int(10)
+  tx_type_cd varchar(10)
+  amount int(10)
+
+
+// how do you version APIs
+// how do you split the service points
+// you could by oboject but do you really?
+
+/en/api/partners
+/en/api/wallets
+/en/api/affiliates
+/en/api/items
+
+// now look at oath2.txt to test the api
+
 
 
 

@@ -1,0 +1,3 @@
+mysql -D sh < sh.sp_tx_get_by_wallet.sql;
+mysql -D sh < sh.sp_wallet_get_by_affiliate.sql;
+mysql -D sh < sh.sp_wallet_get_by_id.sql;

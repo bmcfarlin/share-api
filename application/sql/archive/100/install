@@ -1,0 +1,3 @@
+mysql -D sh < sh.sp_affiliate_get_by_code.sql;
+mysql -D sh < sh.sp_affiliate_get_by_id.sql;
+mysql -D sh < sh.sp_affiliate_get_by_partner_user.sql;

@@ -9,6 +9,11 @@ sudo systemctl status vault
 !!!!!! IMPORTANT !!!!!!
 vault secrets enable -path=secret kv
 
+!!!!!! IMPORTANT !!!!!!
+When you start a Vault server, it starts in a sealed state. In this state, Vault can access the physical storage, but it cannot decrypt any of the data on it.
+
+vault operator unseal
+
 vault kv put -format=json -mount=secret dev/sh.qea.la ben=daman
 vault kv get -format=json -mount=secret dev/sh.qea.la
 
