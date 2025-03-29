@@ -183,10 +183,6 @@ Delete a transaction.
 }
 ```
 
----
-## Authentication
-This API does not currently enforce authentication. However, future versions may require authentication tokens.
-
 ## Error Handling
 Responses include an error message in case of failure:
 ```json
