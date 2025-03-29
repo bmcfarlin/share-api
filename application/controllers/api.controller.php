@@ -45,14 +45,19 @@ class ApiController extends BaseController
             $affiliate = Affiliate::GetById($id);
             if($affiliate){
               $affiliate_id = $affiliate->affiliate_id;
-              $item = Wallet::GetByAffiliate($affiliate_id);
-              if($item){
-                $item->clean();
-                $root->items = [$item];
-              }else{
-                $root->status = 'error';
-                $root->error = 'invalid request 306';
+
+              $wallet = Wallet::GetByAffiliate($affiliate_id);
+
+              if(empty($wallet)){
+                $wallet = new Wallet();
+                $wallet->affiliate_id = $affiliate_id;
+                $wallet->name = 'default';
+                $wallet->Save();
               }
+
+              $wallet->clean();
+              $root->items = [$wallet];
+
             }else{
               $root->status = 'error';
               $root->error = 'invalid request 305';
@@ -339,19 +344,19 @@ class ApiController extends BaseController
 
                 }else{
                   $root->status = 'error';
-                  $root->error = 'invalid request 303';
+                  $root->error = 'invalid request 606';
                 }
               }else{
                 $root->status = 'error';
-                $root->error = 'invalid request 302';
+                $root->error = 'invalid request 605';
               }
             }else{
               $root->status = 'error';
-              $root->error = 'invalid request 301';
+              $root->error = 'invalid request 604';
             }
           }else{
             $root->status = 'error';
-            $root->error = 'invalid request 300';
+            $root->error = 'invalid request 602';
           }
 
           break;
@@ -370,11 +375,11 @@ class ApiController extends BaseController
                 $root->items = [$item];
               }else{
                 $root->status = 'error';
-                $root->error = 'invalid request 101';
+                $root->error = 'invalid request 601';
               }
             }else{
               $root->status = 'error';
-              $root->error = 'invalid request 100';
+              $root->error = 'invalid request 600';
             }
           }
           break;

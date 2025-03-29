@@ -72,7 +72,7 @@ affiliate
 partner
   partner_id int(10)
   name varchar(100)
-  description varchr(512)
+  description varchar(512)
   url varchar(100)
   email varchar(100)
 
@@ -87,6 +87,10 @@ tx
   tx_type_cd varchar(10)
   amount int(10)
 
+tx_type
+  tx_type_cd varchar(10)
+  tx_type_name varchar(100)
+  
 
 // how do you version APIs
 // how do you split the service points

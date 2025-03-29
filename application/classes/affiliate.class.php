@@ -34,12 +34,19 @@ class Affiliate{
         case 'code':
         case 'creation_dtm':
         case 'last_update_dtm':
+        case 'user_id':
           break;
         default:
           unset($this->$key);
           break;
       }
     }
+
+    $user_id = $this->user_id;
+    $user = Membership::GetUser($user_id);
+    $email = $user->email;
+    $this->email = $email;
+    unset($this->user_id);
   }
   
   static function GetAll(){
