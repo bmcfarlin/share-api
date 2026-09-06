@@ -2,6 +2,8 @@
 class Uuid
 {
 
+  const EMPTY = '00000000-0000-0000-0000-000000000000';  
+
   function __toString(){
     return get_class($this);
   }
@@ -17,4 +19,3 @@ class Uuid
 }
 
 
-?>
