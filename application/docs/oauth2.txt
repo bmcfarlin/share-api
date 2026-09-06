@@ -1,0 +1,70 @@
+https://oauth2.thephpleague.com/
+
+openssl genrsa -out private.key 2048
+openssl rsa -in private.key -pubout -out public.key
+
+vendor/bin/generate-defuse-key
+
+use \Defuse\Crypto\Key;
+
+$server = new AuthorizationServer(
+  $clientRepository,
+  $accessTokenRepository,
+  $scopeRepository,
+  $privateKeyPath,
+  Key::loadFromAsciiSafeString($encryptionKey)
+);
+
+curl --location --request POST 'https://lcl.qea.la:8248/en/oauth/access-token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=xxx' \
+--data-urlencode 'client_secret=xxx' \
+--data-urlencode 'grant_type=client_credentials'
+
+curl --silent --location --request GET 'https://lcl.qea.la:8248/en/api/affiliate' \
+--header 'Authorization: xxx.xxx' \
+| jq
+
+curl --silent --location --request GET 'https://lcl.qea.la:8248/en/api/affiliate/1' \
+--header 'Authorization: xxx.xxx' \
+| jq
+
+curl --silent --location --request GET 'https://lcl.qea.la:8248/en/api/affiliate/1/wallet' \
+--header 'Authorization: xxx.xxx' \
+| jq
+
+curl --silent --location --request POST 'https://lcl.qea.la:8248/en/api/affiliate' \
+--header 'Authorization: xxx.xxx' \
+--data-urlencode 'email=jade@qeala.com' \
+--data-urlencode 'partner_id=1' \
+| jq
+
+curl --silent --location --request PUT 'https://lcl.qea.la:8248/en/api/affiliate/1' \
+--header 'Authorization: xxx.xxx' \
+--data-urlencode 'code=delvalle' \
+| jq
+
+curl --silent --location --request GET 'https://lcl.qea.la:8248/en/api/wallet/1' \
+--header 'Authorization: xxx.xxx' \
+| jq
+
+curl --silent --location --request GET 'https://lcl.qea.la:8248/en/api/wallet/1/tx' \
+--header 'Authorization: xxx.xxx' \
+| jq
+
+curl --silent --location --request GET 'https://lcl.qea.la:8248/en/api/tx/1' \
+--header 'Authorization: xxx.xxx' \
+| jq
+
+curl --silent --location --request POST 'https://lcl.qea.la:8248/en/api/tx' \
+--header 'Authorization: xxx.xxx' \
+--data-urlencode 'email=xxx@qeala.com' \
+--data-urlencode 'partner_id=1' \
+--data-urlencode 'amount=305' \
+--data-urlencode 'tx_type_cd=01' \
+| jq
+
+curl --silent --location --request PUT 'https://lcl.qea.la:8248/en/api/tx/3' \
+--header 'Authorization: xxx.xxx' \
+--data-urlencode 'amount=399' \
+| jq
